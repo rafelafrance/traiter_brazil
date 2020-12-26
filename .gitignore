@@ -1,0 +1,32 @@
+# Editors
+.ropeproject/
+.spyproject/
+.vscode/
+.idea/
+.mypy_cache/
+.~lock.*
+
+# Environment
+venv/
+
+# Python
+*.pyc
+*.swp
+__pycache__
+
+# data
+output/
+
+data/
+
+# notebooks
+notebooks/
+.ipynb_checkpoints/
+
+# models
+models/
+
+# Temp files
+doc/
+old/
+junk*
