@@ -1,6 +1,6 @@
 """Parse morphism trait notations."""
 
-from ..pylib.util import PARTS, REPLACE, TRAIT_STEP
+from ..pylib.consts import PARTS, REPLACE, TRAIT_STEP
 
 
 MORPHISM_KEY = """ type """.split()

@@ -7,7 +7,7 @@ from traiter.pylib.to_entities import ToEntities
 
 from .attach import attach
 from .matcher import Matcher
-from ..pylib.util import ABBREVS, GROUP_STEP, LINK_STEP, TRAIT_STEP
+from ..pylib.consts import ABBREVS, GROUP_STEP, LINK_STEP, TRAIT_STEP
 
 
 class Pipeline(SpacyPipeline):  # pylint: disable=too-few-public-methods

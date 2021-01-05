@@ -11,7 +11,7 @@ from .part import PART
 from .shape import SHAPE
 from .size import SIZE
 from .surface import SURFACE
-from ..pylib.util import GROUP_STEP, TERMS, TRAIT_STEP
+from ..pylib.consts import GROUP_STEP, TERMS, TRAIT_STEP
 
 MATCHERS = [
     COUNT, INFLORESCENCE, MARGIN, MORPHISM, PART, SHAPE, SIZE, SURFACE]

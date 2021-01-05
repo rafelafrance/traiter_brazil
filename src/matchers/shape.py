@@ -2,7 +2,7 @@
 
 from traiter.pylib.util import squash
 
-from ..pylib.util import PARTS, REPLACE, SLASH, TRAIT_STEP
+from ..pylib.consts import PARTS, REPLACE, SLASH, TRAIT_STEP
 
 SHAPE_KEY = """ form shape """.split()
 

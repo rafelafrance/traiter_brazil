@@ -1,6 +1,6 @@
 """Parse inflorescence trait notations."""
 
-from ..pylib.util import REPLACE, TRAIT_STEP
+from ..pylib.consts import REPLACE, TRAIT_STEP
 
 INFLORESCENCE_KEY = """ raceme """.split()
 

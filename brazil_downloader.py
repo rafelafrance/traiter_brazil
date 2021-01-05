@@ -20,8 +20,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 from traiter.pylib.util import log
 
-from src.pylib.brazil_util import BRAZIL_DIR, BRAZIL_FAMILIES, SITE, \
-    species_path
+from src.pylib.util import species_path
+from src.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES, SITE
 
 # Don't hit the site too hard
 SLEEP_MID = 15

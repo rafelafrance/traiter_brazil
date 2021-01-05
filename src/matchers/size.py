@@ -4,7 +4,7 @@ import re
 
 from traiter.pylib.util import to_positive_float
 
-from ..pylib.util import GROUP_STEP, NUMBER, PARTS, REPLACE, SLASH, TRAIT_STEP
+from ..pylib.consts import GROUP_STEP, NUMBER, PARTS, REPLACE, SLASH, TRAIT_STEP
 
 SIZE_KEY = """ size """.split()
 PLUS = """ bigger larger greater """.split()

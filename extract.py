@@ -3,12 +3,14 @@
 """Parse src treatments."""
 
 import argparse
+import json
 import sys
 import textwrap
 from copy import deepcopy
+from datetime import datetime
 
-import src.pylib.brazil_util as b_util
 from src.matchers.pipeline import Pipeline
+from src.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES
 from src.readers.brazil_reader import brazil_reader
 from src.writers.csv_ import csv_writer
 from src.writers.data_ import biluo_writer, iob_writer, ner_writer
@@ -17,10 +19,10 @@ from src.writers.html_ import html_writer
 
 def get_brazil_families(args):
     """Handle Brazil Flora extractions"""
-    families = {k: v for k, v in b_util.get_families().items() if v['count']}
+    families = {k: v for k, v in get_families().items() if v['count']}
 
     if args.list_families:
-        b_util.print_families(families)
+        print_families(families)
         sys.exit()
 
     family_set = {f.capitalize() for f in args.family}
@@ -123,6 +125,52 @@ def parse_args():
         setattr(args, 'csv_file', sys.stdout)
 
     return args
+
+
+def get_families():
+    """Get a list of all families in the Brazil catalog."""
+    with open(BRAZIL_FAMILIES) as in_file:
+        all_families = json.load(in_file)
+
+    all_families = [f for f in all_families['result'] if f]
+
+    families = {}
+
+    for family in all_families:
+        row = {'family': family, 'created': '', 'modified': '', 'count': 0}
+
+        path = BRAZIL_DIR / family
+
+        if path.exists():
+            row['count'] = len(list(path.glob('*.html')))
+            if row['count']:
+                stat = path.stat()
+                row['created'] = datetime.fromtimestamp(
+                    stat.st_ctime).strftime('%Y-%m-%d %H:%M')
+                row['modified'] = datetime.fromtimestamp(
+                    stat.st_mtime).strftime('%Y-%m-%d %H:%M')
+
+        families[family] = row
+
+    return families
+
+
+def print_families(families):
+    """Display a list of all families."""
+    template = '{:<20} {:<20} {:<20} {:>8}'
+
+    print(template.format(
+        'Family',
+        'Directory Created',
+        'Directory Modified',
+        'Treatments'))
+
+    for family in families.values():
+        print(template.format(
+            family['family'],
+            family['created'],
+            family['modified'],
+            family['count'] if family['count'] else ''))
 
 
 if __name__ == '__main__':

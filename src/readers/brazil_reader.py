@@ -1,15 +1,17 @@
 """Parse Brazil Flora html pages."""
 
 import json
-import src.pylib.brazil_util as b_util
+import src.pylib.util as b_util
 from bs4 import BeautifulSoup
+
+import src.pylib.consts
 
 
 def brazil_reader(_, families):
     """Parse the downloaded webpages."""
     rows = []
     for family in families:
-        dir_ = b_util.BRAZIL_DIR / family
+        dir_ = src.pylib.consts.BRAZIL_DIR / family
         links = get_species(family)
         for path in sorted(dir_.glob('*.html')):
             page = get_page(path)

@@ -2,7 +2,7 @@
 
 from traiter.pylib.util import squash
 
-from ..pylib.util import GROUP_STEP, TRAIT_STEP
+from ..pylib.consts import GROUP_STEP, TRAIT_STEP
 
 MARGIN_KEY = """ margin margins """.split()
 MARGIN_SHAPE = """ margin_shape surface """.split()

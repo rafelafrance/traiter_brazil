@@ -2,7 +2,7 @@
 
 from traiter.pylib.util import to_positive_int
 
-from ..pylib.util import GROUP_STEP, PARTS, SLASH, TRAIT_STEP
+from ..pylib.consts import GROUP_STEP, PARTS, SLASH, TRAIT_STEP
 
 COUNT_KEY = """ count number """.split()
 MORE = """ more """.split()

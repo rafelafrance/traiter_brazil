@@ -2,7 +2,7 @@
 
 from traiter.pylib.util import squash
 
-from ..pylib.util import PARTS, PRESENCE, PRESENT, REPLACE, SLASH, TRAIT_STEP
+from ..pylib.consts import PARTS, PRESENCE, PRESENT, REPLACE, SLASH, TRAIT_STEP
 
 SURFACE_KEY = """ surface surfaces """.split()
 

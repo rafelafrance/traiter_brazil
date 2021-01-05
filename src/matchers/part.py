@@ -1,6 +1,6 @@
 """Plant part parser."""
 
-from ..pylib.util import TRAIT_STEP, COLON, REPLACE
+from ..pylib.consts import TRAIT_STEP, COLON, REPLACE
 
 
 def part(span):
