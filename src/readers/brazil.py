@@ -1,13 +1,13 @@
 """Parse Brazil Flora html pages."""
 
 import json
-import src.pylib.util as b_util
+import src.pylib.util as util
 from bs4 import BeautifulSoup
 
 import src.pylib.consts
 
 
-def brazil_reader(_, families):
+def brazil(_, families):
     """Parse the downloaded webpages."""
     rows = []
     for family in families:
@@ -32,7 +32,7 @@ def brazil_reader(_, families):
 
 def get_species(family):
     """Get the species data."""
-    path = b_util.species_path(family)
+    path = util.species_path(family)
     with open(path) as json_file:
         data = json.load(json_file)
     return {d['taxonid']: d['references'] for d in data['result']}

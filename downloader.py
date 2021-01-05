@@ -21,7 +21,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from traiter.pylib.util import log
 
 from src.pylib.util import species_path
-from src.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES, SITE
+from src.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES
+
+
+# Website to crawl
+SITE = 'http://servicos.jbrj.gov.br/flora/'
 
 # Don't hit the site too hard
 SLEEP_MID = 15

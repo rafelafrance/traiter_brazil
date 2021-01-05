@@ -1,4 +1,4 @@
-"""Common utility functions for Brazil Flora"""
+"""Common utility functions."""
 
 from src.pylib.consts import BRAZIL_DIR, CONVERT
 

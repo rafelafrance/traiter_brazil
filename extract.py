@@ -11,9 +11,9 @@ from datetime import datetime
 
 from src.matchers.pipeline import Pipeline
 from src.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES
-from src.readers.brazil_reader import brazil_reader
+from src.readers.brazil import brazil
 from src.writers.csv_ import csv_writer
-from src.writers.data_ import biluo_writer, iob_writer, ner_writer
+from src.writers.data import biluo_writer, iob_writer, ner_writer
 from src.writers.html_ import html_writer
 
 
@@ -37,7 +37,7 @@ def main(args):
     pipeline = Pipeline()
     families = get_brazil_families(args)
 
-    rows = brazil_reader(args, families)
+    rows = brazil(args, families)
 
     for row in rows:
         row['doc'] = pipeline.nlp(row['text'])

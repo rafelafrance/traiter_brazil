@@ -1,18 +1,22 @@
-"""Misc. utils."""
+"""Project-wide constants."""
 
 from pathlib import Path
 
 from traiter.pylib.terms import Terms
 
+# Location of files and directories
 BASE_DIR = Path.cwd().resolve().parts[-1]
 BASE_DIR = Path.cwd() if BASE_DIR.find('brazil') > -1 else Path.cwd().parent
-
 DATA_DIR = BASE_DIR / 'data'
+BRAZIL_DIR = DATA_DIR / 'brazil'
+BRAZIL_FAMILIES = BRAZIL_DIR / 'families.json'
 
+# Rule steps
 GROUP_STEP = 'group'
 TRAIT_STEP = 'traits'
 LINK_STEP = 'link'
 
+# Character lists and regexes used in rules
 CLOSE = ' ) ] '.split()
 COLON = ' : '.split()
 COMMA = ' , '.split()
@@ -29,6 +33,7 @@ SLASH = ' / '.split()
 
 PARTS = ['part', 'subpart']
 
+# Terms and dicts made from them
 TERM_PATH = BASE_DIR / 'src' / 'vocabulary' / 'terms.csv'
 TERMS = Terms(csv_file=TERM_PATH)
 TERMS.hyphenate_terms()
@@ -36,6 +41,7 @@ TERMS.hyphenate_terms()
 REPLACE = {t['pattern']: r for t in TERMS if (r := t.get('replace'))}
 CATEGORY = {t['pattern']: c for t in TERMS if (c := t.get('category'))}
 
+# Handle presence or absence clauses with these terms.
 PRESENCE = {
     'present': True,
     'presence': True,
@@ -44,8 +50,10 @@ PRESENCE = {
 }
 PRESENT = list(PRESENCE)
 
+# Abbreviations stopping sentence splitting
 ABBREVS = """Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec ca """
 
+# Unit conversions
 CONVERT = {
     'cm': 10.0,
     'dm': 100.0,
@@ -57,7 +65,3 @@ CONVERT = {
     'meters': 1000.0,
     'millimeters': 1.0,
 }
-
-BRAZIL_DIR = DATA_DIR / 'brazil'
-BRAZIL_FAMILIES = BRAZIL_DIR / 'families.json'
-SITE = 'http://servicos.jbrj.gov.br/flora/'
