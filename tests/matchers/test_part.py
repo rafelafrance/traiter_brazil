@@ -4,8 +4,6 @@
 
 import unittest
 
-from traiter.pylib.util import shorten  # pylint: disable=import-error
-
 from tests.setup import test
 
 
@@ -14,6 +12,6 @@ class TestPart(unittest.TestCase):
 
     def test_part_01(self):
         self.assertEqual(
-            test(shorten('Leaf: number of the pairs')),
+            test('Leaf: number of the pairs'),
             [{'part': 'leaf', 'trait': 'part', 'start': 0, 'end': 5}]
         )

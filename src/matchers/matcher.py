@@ -22,11 +22,10 @@ class Matcher(SpacyMatcher):  # pylint: disable=too-few-public-methods
 
     name: str = 'brazil_matcher'
 
-    def __init__(self, nlp: Language, training: bool = False):
+    def __init__(self, nlp: Language):
         super().__init__(nlp)
 
         self.add_terms(TERMS)
 
-        if not training:
-            self.add_patterns(MATCHERS, GROUP_STEP)
-            self.add_patterns(MATCHERS, TRAIT_STEP)
+        self.add_patterns(MATCHERS, GROUP_STEP)
+        self.add_patterns(MATCHERS, TRAIT_STEP)

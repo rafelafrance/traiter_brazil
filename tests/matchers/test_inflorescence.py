@@ -4,8 +4,6 @@
 
 import unittest
 
-from traiter.pylib.util import shorten  # pylint: disable=import-error
-
 from tests.setup import test
 
 
@@ -14,7 +12,7 @@ class TestMorphism(unittest.TestCase):
 
     def test_inflorescence_01(self):
         self.assertEqual(
-            test(shorten("""Inflorescence: raceme congested;""")),
+            test('Inflorescence: raceme congested;'),
             [{'part': 'inflorescence', 'trait': 'part', 'start': 0, 'end': 14},
              {'part': 'inflorescence', 'inflorescence': 'congested',
               'trait': 'inflorescence', 'start': 15, 'end': 31}]
@@ -22,7 +20,7 @@ class TestMorphism(unittest.TestCase):
 
     def test_inflorescence_02(self):
         self.assertEqual(
-            test(shorten("""Inflorescence: raceme lax;""")),
+            test('Inflorescence: raceme lax;'),
             [{'part': 'inflorescence', 'trait': 'part', 'start': 0, 'end': 14},
              {'part': 'inflorescence', 'inflorescence': 'lax',
               'trait': 'inflorescence', 'start': 15, 'end': 25}]

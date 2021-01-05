@@ -35,11 +35,11 @@ PARTS = ['part', 'subpart']
 
 # Terms and dicts made from them
 TERM_PATH = BASE_DIR / 'src' / 'vocabulary' / 'terms.csv'
-TERMS = Terms(csv_file=TERM_PATH)
-TERMS.hyphenate_terms()
+TERMS = Terms.read_csv(TERM_PATH)
+TERMS += Terms.hyphenate_terms(TERMS)
 
-REPLACE = {t['pattern']: r for t in TERMS if (r := t.get('replace'))}
-CATEGORY = {t['pattern']: c for t in TERMS if (c := t.get('category'))}
+REPLACE = TERMS.pattern_dicts('replace')
+CATEGORY = TERMS.pattern_dicts('category')
 
 # Handle presence or absence clauses with these terms.
 PRESENCE = {

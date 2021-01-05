@@ -15,24 +15,18 @@ class Pipeline(SpacyPipeline):  # pylint: disable=too-few-public-methods
 
     token2entity = {TRAIT_STEP, LINK_STEP, GROUP_STEP}
 
-    def __init__(
-            self,
-            gpu: str = 'prefer',
-            training: bool = False,
-            tokenizer: bool = True
-    ) -> None:
-        super().__init__(gpu=gpu, tokenizer=tokenizer)
+    def __init__(self) -> None:
+        super().__init__()
 
         self.nlp.disable_pipes(['ner'])
 
-        matcher = Matcher(self.nlp, training=training)
+        matcher = Matcher(self.nlp)
         self.nlp.add_pipe(matcher, last=True, name=TRAIT_STEP)
 
-        if not training:
-            sentencizer = SpacySentencizer(ABBREVS)
-            self.nlp.add_pipe(sentencizer, before='parser')
+        sentencizer = SpacySentencizer(ABBREVS)
+        self.nlp.add_pipe(sentencizer, before='parser')
 
-            to_entities = ToEntities(token2entity=self.token2entity)
-            self.nlp.add_pipe(to_entities, last=True)
+        to_entities = ToEntities(token2entity=self.token2entity)
+        self.nlp.add_pipe(to_entities, last=True)
 
-            self.nlp.add_pipe(attach, last=True, name=LINK_STEP)
+        self.nlp.add_pipe(attach, last=True, name=LINK_STEP)

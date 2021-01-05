@@ -4,8 +4,6 @@
 
 import unittest
 
-from traiter.pylib.util import shorten  # pylint: disable=import-error
-
 from tests.setup import test
 
 
@@ -14,9 +12,7 @@ class TestMargin(unittest.TestCase):
 
     def test_margin_01(self):
         self.assertEqual(
-            test(shorten("""
-                Fruit: margin smooth or sinuose the irregularly constricted.
-                """)),
+            test('Fruit: margin smooth or sinuose the irregularly constricted.'),
             [{'part': 'fruit', 'trait': 'part', 'start': 0, 'end': 6},
              {'subpart': 'margin', 'part': 'fruit',
               'margin': ['smooth', 'sinuose', 'irregularly constricted'],
@@ -25,7 +21,7 @@ class TestMargin(unittest.TestCase):
 
     def test_margin_02(self):
         self.assertEqual(
-            test(shorten("""Fruit: margin moniliform.""")),
+            test('Fruit: margin moniliform.'),
             [{'part': 'fruit', 'trait': 'part', 'start': 0, 'end': 6},
              {'subpart': 'margin', 'margin': 'moniliform', 'part': 'fruit',
               'trait': 'margin', 'start': 7, 'end': 24}]

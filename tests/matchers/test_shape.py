@@ -4,8 +4,6 @@
 
 import unittest
 
-from traiter.pylib.util import shorten  # pylint: disable=import-error
-
 from tests.setup import test
 
 
@@ -14,22 +12,21 @@ class TestShape(unittest.TestCase):
 
     def test_shape_01(self):
         self.assertEqual(
-            test(shorten('form of the leaflet lanceolate;')),
+            test('form of the leaflet lanceolate;'),
             [{'shape': 'lanceolate', 'part': 'leaflet',
               'trait': 'shape', 'start': 0, 'end': 30}]
         )
 
     def test_shape_02(self):
         self.assertEqual(
-            test(shorten("""
-                form of the leaflet elliptic/obovate/rhombic;""")),
+            test("""form of the leaflet elliptic/obovate/rhombic;"""),
             [{'shape': ['elliptic', 'obovate', 'rhomboic'], 'part': 'leaflet',
               'trait': 'shape', 'start': 0, 'end': 44}]
         )
 
     def test_shape_03(self):
         self.assertEqual(
-            test(shorten('nectary patelliform.')),
+            test('nectary patelliform.'),
             [{'shape': 'patelliform', 'part': 'nectary',
               'trait': 'shape', 'start': 0, 'end': 19}]
         )
