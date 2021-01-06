@@ -20,7 +20,7 @@ class TestShape(unittest.TestCase):
     def test_shape_02(self):
         self.assertEqual(
             test("""form of the leaflet elliptic/obovate/rhombic;"""),
-            [{'shape': ['elliptic', 'obovate', 'rhomboic'], 'part': 'leaflet',
+            [{'shape': ['elliptic', 'obovate', 'rhombic'], 'part': 'leaflet',
               'trait': 'shape', 'start': 0, 'end': 44}]
         )
 

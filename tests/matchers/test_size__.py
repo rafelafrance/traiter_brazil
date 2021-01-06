@@ -29,3 +29,10 @@ class TestSize(unittest.TestCase):
               'plus': True, 'part': 'leaflet', 'trait': 'size',
               'start': 0, 'end': 48}]
         )
+
+    def test_size_04(self):
+        self.assertEqual(
+            test('size of the leaflet to 1.8 cm/bigger than 1.8 cm;'),
+            [{'length_low': 1.8, 'length_units': 'cm', 'plus': True,
+              'part': 'leaflet', 'trait': 'size', 'start': 0, 'end': 48}]
+        )

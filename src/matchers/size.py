@@ -46,9 +46,23 @@ def size(span):
         key = f'{dim}_units'
         data[key] = all_units.pop()
 
-    for measure, label in zip(measurements, LABELS[len(measurements)]):
-        label = f'{dim}_{label}'
-        data[label] = measure['value']
+    low = ''
+    for measure, lab in zip(measurements, LABELS[len(measurements)]):
+        label = f'{dim}_{lab}'
+
+        if lab == 'low':
+            low = label
+
+        if lab != 'high':
+            data[label] = measure['value']
+
+        # Handle cases where low == high or low > high
+        else:
+            if data[low] < measure['value']:
+                data[label] = measure['value']
+            elif data[low] > measure['value']:
+                data[low], data[label] = measure['value'], data[low]
+
         if b := measure.get('plus'):
             data['plus'] = b
 

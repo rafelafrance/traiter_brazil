@@ -275,7 +275,8 @@ mass_units,oz,lower,oz,,,NOUN
 mass_units,ozs,lower,oz,,,NOUN
 mass_units,pound,lower,lbs,,,NOUN
 mass_units,pounds,lower,lbs,,,NOUN
-morphic,heteropmorphic,lower,,,,ADJ
+morphic,heteromorphic,lower,,,,ADJ
+morphic,heteropmorphic,lower,heteromorphic,,,ADJ
 morphic,homomorphic,lower,,,,ADJ
 part,2 n,lower,2n,,,X
 part,2n,lower,2n,,,X
@@ -589,8 +590,8 @@ shape,reniform,lower,,,,ADJ
 shape,reniform-angulate,lower,reniform-polygonal,,,ADJ
 shape,retuse,lower,,,,ADJ
 shape,revolute,lower,,,,ADJ
-shape,rhombic,lower,rhomboic,,,ADJ
-shape,rhomboic,lower,,,,ADJ
+shape,rhombic,lower,,,,ADJ
+shape,rhomboic,lower,rhombic,,,ADJ
 shape,rhomboid,lower,,,,ADJ
 shape,rhomboidal,lower,,,,ADJ
 shape,rotate,lower,,,,ADJ

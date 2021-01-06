@@ -13,6 +13,6 @@ class TestMorphism(unittest.TestCase):
     def test_morphism_01(self):
         self.assertEqual(
             test('type of the inflorescence heteropmorphic.'),
-            [{'part': 'inflorescence', 'morphism': 'heteropmorphic',
+            [{'part': 'inflorescence', 'morphism': 'heteromorphic',
               'trait': 'morphism', 'start': 0, 'end': 40}]
         )

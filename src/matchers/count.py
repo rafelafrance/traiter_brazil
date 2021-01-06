@@ -10,16 +10,11 @@ MORE = """ more """.split()
 
 def range_(span):
     """Get a count range."""
-    data = {}
     values = [to_positive_int(t.text) for t in span if t.is_digit]
 
-    if len(values) == 1:
-        data['low'] = values[0]
-    elif len(values) == values[-1] - values[0] + 1:
-        data['low'] = values[0]
-        data['high'] = values[-1]
-    else:
-        data['values'] = values
+    data = {'low': min(values)}
+    if len(values) > 1:
+        data['high'] = max(values)
 
     return data
 
