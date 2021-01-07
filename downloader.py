@@ -101,6 +101,9 @@ def pages(args):
 
         log(f'Downloading: {name}')
 
+        if path.exists() and not args.overwrite:
+            continue
+
         # Don't hit the site too hard
         if not first_time:
             time.sleep(random.randint(SLEEP_RANGE[0], SLEEP_RANGE[1]))
@@ -114,9 +117,6 @@ def pages(args):
 
 def download_page(driver, url, path):
     """Download a page if it does not exist."""
-    if path.exists():
-        return
-
     driver.get(url)
 
     spinner = 'modalTelaCarregando'
@@ -127,13 +127,13 @@ def download_page(driver, url, path):
         log(f'Error: waiting for {spinner} to stop')
         return
 
-    spinner = 'linkCites'
-    try:
-        WebDriverWait(driver, WAIT).until(
-            ec.invisibility_of_element((By.ID, spinner)))
-    except (TimeoutError, socket.timeout, HTTPError):
-        log(f'Error: waiting for {spinner} to stop')
-        return
+    # spinner = 'linkCites'
+    # try:
+    #     WebDriverWait(driver, WAIT).until(
+    #         ec.invisibility_of_element((By.ID, spinner)))
+    # except (TimeoutError, socket.timeout, HTTPError):
+    #     log(f'Error: waiting for {spinner} to stop')
+    #     return
 
     with open(path, 'w') as out_file:
         out_file.write(driver.page_source)
@@ -166,6 +166,10 @@ def parse_args():
         help="""Filter the list of species in a family to include this string
             in the scientific name. E.g. 'Abarema' will get all species in the
             genus 'Abarema'.""")
+
+    arg_parser.add_argument(
+        '--overwrite', '-o', action='store_true',
+        help="""Overwrite pages already downloaded.""")
 
     arg_parser.add_argument(
         '--log-file', '-l', default='geckodriver.log',
