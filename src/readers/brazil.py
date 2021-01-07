@@ -1,10 +1,12 @@
 """Parse Brazil Flora html pages."""
 
 import json
-import src.pylib.util as util
+
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 
 import src.pylib.consts
+import src.pylib.util as util
 
 
 def brazil(_, families):
@@ -13,7 +15,8 @@ def brazil(_, families):
     for family in families:
         dir_ = src.pylib.consts.BRAZIL_DIR / family
         links = get_species(family)
-        for path in sorted(dir_.glob('*.html')):
+        paths = sorted(dir_.glob('*.html'))
+        for path in tqdm(paths):
             page = get_page(path)
             controlled = get_controlled(page)
             free = get_free(page)

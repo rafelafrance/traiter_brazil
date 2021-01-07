@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <title>Traiter</title>
 <style>
-{% include 'html_writer.css' -%}
+{% include 'html_.css' -%}
 </style>
 </head>
 <body>
@@ -44,7 +44,6 @@
           <span class="smaller">({{ row.flora_name }})</span>
         {% endif %}
       </td>
-      </td>
       <td>
         <a href="{{ row.link }}"
             target="_blank" rel="noopener noreferrer">
@@ -52,6 +51,7 @@
         </a>
       </td>
       <td class="text">{{ row.text | safe }}</td>
+    </tr>
     <tr class="term closed" data-taxon-id="{{ row.taxon_id }}">
       <td></td>
       <td></td>
@@ -70,7 +70,7 @@
 </table>
 
 <script>
-{% include 'html_writer.js' -%}
+{% include 'html_.js' -%}
 </script>
 
 </body>

@@ -69,6 +69,7 @@ td, th {
 
 .bold { font-weight: bold; }
 .bold-italic { font-weight: bold; font-style: italic; }
+.uncovered { border: 2px red solid; }
 
 .cc0 { background: #a6cee388; }
 .cc1 { background: #1f78b488; }

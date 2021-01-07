@@ -6,6 +6,7 @@ from html import escape
 from itertools import cycle
 
 from jinja2 import Environment, FileSystemLoader
+from tqdm import tqdm
 
 COLOR_COUNT = 14
 BACKGROUNDS = cycle([f'c{i}' for i in range(COLOR_COUNT)])
@@ -21,7 +22,7 @@ def html_writer(args, rows):
 
     classes = build_classes(rows)
 
-    for row in rows:
+    for row in tqdm(rows):
         row['raw_text'] = row['text']
         row['text'] = format_text(row, classes)
         row['traits'] = format_traits(row, classes)
@@ -111,6 +112,7 @@ def format_text(row, classes):
     for trait in row['traits']:
         if 'part' not in trait:
             continue
+
         if trait['trait'] == 'part':
             label = trait['part']
             name = 'part'
@@ -126,17 +128,27 @@ def format_text(row, classes):
         title = ', '.join(f'{k} = {v}' for k, v in trait.items()
                           if k not in SKIPS)
         title = f'{label}: {title}' if title else label
+
         if prev < start:
-            frags.append(escape(text[prev:start]))
+            uncovered(frags, text[prev:start])
+
         frags.append(f'<span class="{classes[name]}" title="{title}">')
         frags.append(escape(text[start:end]))
         frags.append('</span>')
         prev = end
 
     if len(text) > prev:
-        frags.append(text[prev:])
+        uncovered(frags, text[prev:])
 
     return ''.join(frags)
+
+
+def uncovered(frags, text):
+    """Output text that is not part of a trait."""
+    class_ = 'uncovered' if len(text.strip()) > 1 else 'other'
+    frags.append(f'<span class="{class_}">')
+    frags.append(text)
+    frags.append('</span>')
 
 
 def trait_label(trait, sep=' '):
