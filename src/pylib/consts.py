@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from traiter.pylib.terms import Terms
+from traiter.terms.csv_ import Csv
 
 # Location of files and directories
 BASE_DIR = Path.cwd().resolve().parts[-1]
@@ -35,8 +35,8 @@ PARTS = ['part', 'subpart']
 
 # Terms and dicts made from them
 TERM_PATH = BASE_DIR / 'src' / 'vocabulary' / 'terms.csv'
-TERMS = Terms.read_csv(TERM_PATH)
-TERMS += Terms.hyphenate_terms(TERMS)
+TERMS = Csv.read_csv(TERM_PATH)
+TERMS += Csv.hyphenate_terms(TERMS)
 
 REPLACE = TERMS.pattern_dicts('replace')
 CATEGORY = TERMS.pattern_dicts('category')

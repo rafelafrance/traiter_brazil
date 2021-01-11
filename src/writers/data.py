@@ -3,7 +3,7 @@
 import json
 
 from ..pylib.consts import TERMS, TRAIT_STEP
-from ..matchers.matcher import MATCHERS
+from junk.matcher import MATCHERS
 from ..matchers.pipeline import Pipeline
 
 LABELS = set()

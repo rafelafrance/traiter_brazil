@@ -1,6 +1,6 @@
 """Parse shape traits."""
 
-from traiter.pylib.util import squash
+from traiter.util import squash
 
 from ..pylib.consts import PARTS, REPLACE, SLASH, TRAIT_STEP
 

@@ -1,6 +1,6 @@
 """Parse surface trait notations."""
 
-from traiter.pylib.util import squash
+from traiter.util import squash
 
 from ..pylib.consts import PARTS, PRESENCE, PRESENT, REPLACE, SLASH, TRAIT_STEP
 

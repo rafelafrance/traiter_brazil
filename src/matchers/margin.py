@@ -1,6 +1,6 @@
 """Parse margin trait notations."""
 
-from traiter.pylib.util import squash
+from traiter.util import squash
 
 from ..pylib.consts import GROUP_STEP, TRAIT_STEP
 
