@@ -5,15 +5,15 @@ import json
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
-import src.pylib.consts
-import src.pylib.util as util
+import brazil.pylib.consts
+import brazil.pylib.util as util
 
 
 def brazil(_, families):
     """Parse the downloaded webpages."""
     rows = []
     for family in families:
-        dir_ = src.pylib.consts.BRAZIL_DIR / family
+        dir_ = brazil.pylib.consts.BRAZIL_DIR / family
         links = get_species(family)
         paths = sorted(dir_.glob('*.html'))
         for path in tqdm(paths):

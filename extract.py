@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Parse src treatments."""
+"""Parse brazil treatments."""
 
 import argparse
 import json
@@ -9,12 +9,12 @@ import textwrap
 from copy import deepcopy
 from datetime import datetime
 
-from src.matchers.pipeline import Pipeline
-from src.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES
-from src.readers.brazil import brazil
-from src.writers.csv_ import csv_writer
-from src.writers.data import biluo_writer, iob_writer, ner_writer
-from src.writers.html_ import html_writer
+from brazil.matchers.pipeline import Pipeline
+from brazil.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES
+from brazil.readers.brazil import brazil
+from brazil.writers.csv_ import csv_writer
+from brazil.writers.data import biluo_writer, iob_writer, ner_writer
+from brazil.writers.html_ import html_writer
 
 
 def main(args):

@@ -20,8 +20,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 from traiter.util import log
 
-from src.pylib.util import species_path
-from src.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES
+from brazil.pylib.util import species_path
+from brazil.pylib.consts import BRAZIL_DIR, BRAZIL_FAMILIES
 
 
 # Website to crawl

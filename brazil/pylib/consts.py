@@ -34,7 +34,7 @@ SLASH = ' / '.split()
 PARTS = ['part', 'subpart']
 
 # Terms and dicts made from them
-TERM_PATH = BASE_DIR / 'src' / 'vocabulary' / 'terms.csv'
+TERM_PATH = BASE_DIR / 'brazil' / 'vocabulary' / 'terms.csv'
 TERMS = Csv.read_csv(TERM_PATH)
 TERMS += Csv.hyphenate_terms(TERMS)
 

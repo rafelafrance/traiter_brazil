@@ -28,7 +28,7 @@ def html_writer(args, rows):
         row['traits'] = format_traits(row, classes)
 
     env = Environment(
-        loader=FileSystemLoader('./src/writers/templates'),
+        loader=FileSystemLoader('./brazil/writers/templates'),
         autoescape=True)
 
     template = env.get_template('html_.html').render(

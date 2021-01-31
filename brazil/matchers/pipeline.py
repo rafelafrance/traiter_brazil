@@ -33,9 +33,9 @@ class Pipeline(SpacyPipeline):  # pylint: disable=too-few-public-methods
 
         token2entity = {TRAIT_STEP, LINK_STEP, GROUP_STEP}
 
-        Term.add_pipes(self.nlp, TERMS, before='parser')
-        Rule.add_pipe(self.nlp, MATCHERS, GROUP_STEP, before='parser')
-        Rule.add_pipe(self.nlp, MATCHERS, TRAIT_STEP, before='parser')
-        ToEntities.add_pipe(self.nlp, token2entity=token2entity, before='parser')
-        Sentencizer.add_pipe(self.nlp, ABBREVS, before='parser')
+        Term.add_pipes(self.nlp, TERMS)
+        Rule.add_pipe(self.nlp, MATCHERS, GROUP_STEP)
+        Rule.add_pipe(self.nlp, MATCHERS, TRAIT_STEP)
+        ToEntities.add_pipe(self.nlp, token2entity=token2entity)
+        Sentencizer.add_pipe(self.nlp, ABBREVS)
         self.nlp.add_pipe(attach, last=True, name=LINK_STEP)

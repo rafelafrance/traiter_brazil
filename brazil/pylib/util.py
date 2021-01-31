@@ -1,6 +1,6 @@
 """Common utility functions."""
 
-from src.pylib.consts import BRAZIL_DIR, CONVERT
+from brazil.pylib.consts import BRAZIL_DIR, CONVERT
 
 
 def species_path(family):

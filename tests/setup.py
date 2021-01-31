@@ -4,7 +4,7 @@ from typing import Dict, List
 
 from traiter.util import shorten  # pylint: disable=import-error
 
-from src.matchers.pipeline import Pipeline
+from brazil.matchers.pipeline import Pipeline
 
 TEST = Pipeline()  # Singleton for testing
 
